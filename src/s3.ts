@@ -27,6 +27,7 @@ mime.types['hdr'] = 'image/vnd.radiance';
 mime.extensions['image/vnd.radiance'] = ['pbf'];
 mime.types['pbf'] = 'application/octet-stream';
 
+
 export type S3ObjectPrefix = string;
 
 function getTimeString(time: [number, number]) {
@@ -131,8 +132,7 @@ async function uploadMultipartFile(
   });
 
   info(
-    `Started multipart upload for ${key} using ${
-      partSizeInBytes / 1024 / 1024
+    `Started multipart upload for ${key} using ${partSizeInBytes / 1024 / 1024
     }MB chunks and ${concurrency} concurrent processes, please wait...`,
   );
 
@@ -143,8 +143,7 @@ async function uploadMultipartFile(
         ? Math.round((progress.loaded / progress.total) * 100)
         : 0;
     info(
-      `${key}: loaded ${percentLoaded}% (${progress.loaded} of ${
-        progress.total
+      `${key}: loaded ${percentLoaded}% (${progress.loaded} of ${progress.total
       }) (part ${progress.part}) (total time elapsed: ${getTimeString(
         endTime,
       )})`,
@@ -381,8 +380,7 @@ export async function syncFilesToS3(
     info(
       `Discovered ${totalFiles} ${getFilesPlural(
         totalFiles !== 1,
-      )} to upload (${smallFiles.length} small | ${
-        multipartFiles.length
+      )} to upload (${smallFiles.length} small | ${multipartFiles.length
       } multipart), starting sync...`,
     );
   }
@@ -405,8 +403,7 @@ export async function syncFilesToS3(
       );
       const endTime = process.hrtime(startTime);
       info(
-        `Synced ${file.key} (${getTimeString(endTime)}) (${
-          uploadSmallFilesQueue.inProgress
+        `Synced ${file.key} (${getTimeString(endTime)}) (${uploadSmallFilesQueue.inProgress
         } ops in progress)`,
       );
     }),
@@ -437,8 +434,7 @@ export async function syncFilesToS3(
   const endTime = process.hrtime(startTime);
 
   info(
-    `✅ Synced ${totalFiles} ${getFilesPlural(totalFiles !== 1)} (${
-      smallFiles.length
+    `✅ Synced ${totalFiles} ${getFilesPlural(totalFiles !== 1)} (${smallFiles.length
     } small | ${multipartFiles.length} multipart) in ${getTimeString(endTime)}`,
   );
 
