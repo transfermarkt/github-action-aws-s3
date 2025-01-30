@@ -49627,6 +49627,8 @@ class AsyncBatchQueue {
 // Add missing mime types that aren't supported by the 'mime-types' package
 mime_types.extensions["image/vnd.radiance"] = ['hdr'];
 mime_types.types.hdr = 'image/vnd.radiance';
+mime_types.extensions["image/vnd.radiance"] = ['pbf'];
+mime_types.types.pbf = 'application/octet-stream';
 function getTimeString(time) {
     return `${time[0]}s:${(time[1] / 1000000).toFixed(0)}ms`;
 }
